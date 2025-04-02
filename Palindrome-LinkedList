@@ -1,0 +1,83 @@
+You have been given a head to a singly linked list of integers. Write a function check to whether the list given is a 'Palindrome' or not.
+
+Input Format
+
+First and the only line of each test case or query contains the the elements of the singly linked list separated by a single space. Remember/Consider : While specifying the list elements for input, -1 indicates the end of the singly linked list and hence, would never be a list element.
+
+Constraints
+
+0 <= M <= 10^5 Time Limit: 1sec Where 'M' is the size of the singly linked list.
+
+Output Format
+
+For each test case, the only line of output that print 'true' if the list is Palindrome or 'false' otherwise.
+
+Sample Input 0
+
+1 2 3 3 3 1 -1
+Sample Output 0
+
+false
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+import java.io.*;
+import java.util.*;
+
+class node {
+    int val;
+    node next;
+    node(int d) {
+        val = d;
+    }
+}
+
+public class solution {
+    static node head = null;
+    static node last = null;
+
+    static void insert(int d) {
+        node nn = new node(d);
+        if (head == null) {
+            head = nn;
+            last = nn;
+        } else {
+            last.next = nn;
+            last = nn;
+        }
+    }
+    static boolean pal() {
+        List<Integer> list = new ArrayList<>();
+        node temp = head;  
+
+        while (temp != null) {
+            list.add(temp.val);
+            temp = temp.next;
+        }
+
+        int l = 0, r = list.size() - 1;
+        while (l < r) {
+            if (!list.get(l).equals(list.get(r))) {
+                return false;
+            }
+            l++;
+            r--;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNextInt()) {
+            int a = sc.nextInt();
+            if(a==-1){
+                break;
+            }
+            
+            insert(a);
+        }
+        sc.close(); 
+        System.out.println(pal());  
+        
+    }
+}
+
