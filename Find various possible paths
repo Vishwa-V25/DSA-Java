@@ -1,0 +1,55 @@
+There is a robot on a mXn grid.The robot is located at the top left corner(i.e. grid[0][0]).The robot tries to move to the bottom -right corner(i.e. grid[m-1][n-1]). The robot can only move either downwards or rightwards at any point of time.
+
+image
+
+Input Format
+
+FIRST INPUT REPRESENT THE ROW SECOND INPUT REPRESENT THE COLUMN
+
+Output Format
+
+PRINT THE ALL POSSIBLE PATH NOTE: REFER THE SAMBLE INPUT AND OUTPUT.
+
+Sample Input 0
+
+3 2
+Sample Output 0
+
+[hvv, vhv, vvh]
+Sample Input 1
+
+3 1
+Sample Output 1
+
+[vv]
+______________________________________________________________________________________________________________________________________________________________________________________________________________________
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> str=new ArrayList<>();
+        String s="";
+        int r=sc.nextInt();
+        int c=sc.nextInt();
+        func(r,c,str,s);
+        System.out.print(str);
+    }
+    public static void func(int r,int c, ArrayList<String> str,String s){
+        if(r==1 && c==1){
+            str.add(s);
+            return;
+        }
+        if(c>1){
+            func(r,c-1,str,s+"h");
+        }
+        if(r>1){
+            func(r-1,c,str,s+"v");
+        }
+    }
+}
