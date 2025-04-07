@@ -1,0 +1,83 @@
+Write a program to implement a graph using an adjacency Matrix.
+
+** - first2 inputs are number of vertices and edges
+- Then graph is directed or un directed followed by edges.**
+
+Input Format
+
+4
+
+4
+
+yes
+
+1 2 6
+
+2 3 7
+
+3 4 8
+
+2 4 9
+
+Output Format
+
+Adjacency Matrix Representation:
+
+0 6 0 0
+
+0 0 7 9
+
+0 0 0 8
+
+0 0 0 0
+
+Sample Input 0
+
+4
+4
+yes
+1 2 6
+2 3 7
+3 4 8
+2 4 9
+Sample Output 0
+____________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int a = sc.nextInt();
+    int b= sc.nextInt();
+    sc.nextLine();
+    String S=sc.nextLine();
+    int[][] matrix=new int[a][a];
+    for(int i=0;i<b;i++){
+        int s=sc.nextInt();
+        int e=sc.nextInt();
+        int w=sc.nextInt();
+        matrix[s-1][e-1]=w;
+        if(S.equals("no")){
+            matrix[e-1][s-1]=w;
+        }
+    }
+    System.out.println("Adjacency Matrix Representation:");
+    for(int i=0;i<a;i++){
+        for(int j=0;j<a;j++){
+            System.out.print(matrix[i][j]+" ");
+         }
+        System.out.println();
+      } 
+    }
+}
+
+Adjacency Matrix Representation:
+0 6 0 0
+0 0 7 9
+0 0 0 8
+0 0 0 0
